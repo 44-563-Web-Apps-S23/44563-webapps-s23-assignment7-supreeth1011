@@ -1,60 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Hunter </title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hunter</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+hk/b6Je9j9zDQS6U15zwIh7jKpzFfJz7xwTJv" crossorigin="anonymous">
 </head>
-<body>
-<h1 class="bg-info border border-dark">Find the mouse by Supreeth</h1>
-<p class="bg-danger border border-dark">Click on the bushes to search for the mouse, beware the cat</p>
-<p class="bg-secondary border border-dark" id="bushes">Number of bushes checked is zero.</p>
-<p class="bg-warning border border-dark" id="penalty">Penalty is zero.</p>
-<p class="bg-success border border-dark">Click for help.</p>
-<p class="bg-primary border border-dark" id="help">Help report</p>
+<style>
+  body {
+    font-family: 'Times New Roman', Times, serif;
 
-<div class="container">
+  }
+
+  h2 {
+    color: green;
+    font-size: 60px;
+  }
+
+  #instructions {
+    margin-bottom: 50px;
+    color: red;
+    font-size: 40px;
+  }
+
+  #bushes,
+  #penalty,
+  #contact {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    background-color: blue;
+    color: burlywood;
+    border: 1px solid hsl(hue, saturation, lightness);
+    border-radius: 10px;
+    font-size: 25px;
+  }
+
+  #help {
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 40%;
+    display: inline;
+    padding: 10px;
+    background-color: rgb(23, 45, 66);
+    color: rgb(103, 226, 36);
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .search-location {
+    border: 1px solid black;
+    padding: 5px;
+  }
+</style>
+
+<body>
+  <h2>Find the mouse by Supreeth</h2>
+  <p id="instructions">Click on the bushes to search for the mouse, beware the cat</p>
+  <p id="bushes">Number of bushes checked is zero.</p>
+  <p id="penalty">Penalty is zero.</p>
+  <p id="contact" onclick="help()">Click for help.</p>
+  <p id="help">Help report</p>
+  <div class="container-fluid">
+
     <div class="row">
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(0)" width="200" height="200" id="id0"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(1)" width="200" height="200" id="id1"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(2)" width="200" height="200" id="id2"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(3)" width="200" height="200" id="id3"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(4)" width="200" height="200" id="id4"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(5)" width="200" height="200" id="id5"></div>
+
     </div>
+
     <div class="row">
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(6)" width="200" height="200" id="id6"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(7)" width="200" height="200" id="id7"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(8)" width="200" height="200" id="id8"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(9)" width="200" height="200" id="id9"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(10)" width="200" height="200" id="id10"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(11)" width="200" height="200" id="id11"></div>
+
     </div>
+
     <div class="row">
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(12)" width="200" height="200" id="id12"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(13)" width="200" height="200" id="id13"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(14)" width="200" height="200" id="id14"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(15)" width="200" height="200" id="id15"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(16)" width="200" height="200" id="id16"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(17)" width="200" height="200" id="id17"></div>
+
     </div>
+
     <div class="row">
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg." alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-danger"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
-        <div class="col-sm padding:5px border border-success"><img src="bush.jpg" alt="bush" height="120" width="150"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(18)" width="200" height="200" id="id18"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(19)" width="200" height="200" id="id19"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(20)" width="200" height="200" id="id20"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(21)" width="200" height="200" id="id21"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(22)" width="200" height="200" id="id22"></div>
+      <div class="search-location"><img src="bush.jpg" onclick="check(23)" width="200" height="200" id="id23"></div>
+
     </div>
-</div>
+  </div>
+
+  <script>
+    let id = 'id';
+    let checkCount = 0;
+    let penalty = 0;
+    let lastCheck = 0;
+    let mouseLocation = Math.floor(Math.random() * 24);
+    let catLocation = Math.floor(Math.random() * 24);
+    let gameOver = false;
+    let ids = [];
+    for (let i = 0; i <= 23; i++) {
+      ids[i] = id + i;
+    }
+    function check(position) {
+      if (gameOver == true) 
+      {
+      }
+      else 
+      {
+        if (position == 13) 
+        {
+          id = ids[position]
+          document.getElementById(id).src = "mouse.jpg";
+          gameOver = true;
+          penalty = penalty - 3;
+          console.log("image is mouse " + position);
+          console.log("penalty is " + penalty);
+          console.log("GameOver");
+        }
+        else if (position == 21) 
+        {
+          id = ids[position]
+          document.getElementById(id).src = "cat.jpg";
+          gameOver = true;
+          penalty = penalty + 4;
+          console.log("image is cat " + position);
+          console.log("penalty is " + penalty);
+          console.log("GameOver");
+        }
+        else 
+        {
+          id = ids[position]
+          document.getElementById(id).src = "grass.jpg";
+          checkCount += 1;
+          penalty += 1;
+          console.log("checkcount is " + checkCount);
+          console.log("penalty is " + penalty);
+        }
+        lastCheck = position;
+        console.log("lastCheck position is " + lastCheck);
+      }
+
+      bushes.innerHTML = "Number of bushes checked is " + checkCount;
+      penalty.innerHTML = "Penalty is " + penalty;
+    }
+
+
+    function help()
+     {
+      let catRow = Math.floor(catLocation / 4);
+      let catColumn = catLocation % 6;
+      let mouseRow = Math.floor(mouseLocation / 4);
+      let mouseColumn = mouseLocation % 6;
+      let lastRow = Math.floor(lastCheck / 4);
+      let lastColumn = lastCheck % 6;
+      console.log(
+        catRow,
+        catColumn,
+        mouseRow,
+        mouseColumn,
+        lastRow,
+        lastColumn
+      );
+      penalty = penalty + 2;
+      document.getElementById("penalty").innerHTML = "Penalty is " + penalty;
+      if (
+        Math.abs(catRow - lastRow) <= 1 && Math.abs(catColumn - lastColumn) <= 1 && (Math.abs(catRow - mouseRow) > 1 || Math.abs(catColumn - mouseColumn) > 1)
+      ) {
+        document.getElementById("help").innerText = "meow";
+      } else if (
+        Math.abs(mouseRow - lastRow) <= 1 && Math.abs(mouseColumn - lastColumn) <= 1 && (Math.abs(catRow - mouseRow) > 1 ||  Math.abs(catColumn - mouseColumn) > 1)
+      ) {
+        document.getElementById("help").innerText = "squeak";
+      } else {
+        document.getElementById("help").innerText = "sorry, no help available";
+      }
+    }
+
+    function bonus()
+     {
+      let mouseLocation = Math.floor(Math.random() * 24);
+      console.log("mouse location " + mouseLocation);
+      let catLocation = Math.floor(Math.random() * 24);
+      console.log("cat location " + catLocation);
+      document.getElementById("bushes").innerText = "Number of bushes checked is " + 0;
+      document.getElementById("penalty").innerText = "Penalty is " + 0;
+      for (i = 0; i < 24; i++)
+       {
+        if (i == mouseLocation) 
+        {
+          document.getElementById(imageID[i]).src = "mouse.jpg";
+        } else if (i == catLocation) {
+          document.getElementById(imageID[i]).src = "cat.jpg";
+        } else {
+          document.getElementById(imageID[i]).src = "bush.jpg";
+        }
+      }
+    }
+
+  </script>
 
 </body>
+
 </html>
