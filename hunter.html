@@ -68,6 +68,9 @@
   <p id="contact" onclick="help()">Click for help.</p>
   <p id="help">Help report</p>
   <div class="container-fluid">
+    <div class="container">
+      <button type="button" class="btn btn-primary" onclick="newGame()">New Game</button>
+  </div>
 
     <div class="row">
       <div class="search-location"><img src="bush.jpg" onclick="check(0)" width="200" height="200" id="id0"></div>
@@ -152,15 +155,16 @@
         {
           id = ids[position]
           document.getElementById(id).src = "grass.jpg";
-          checkCount += 1;
+    
+        }
+       
+      }
+      lastCheck = position;
+        console.log("lastCheck position is " + lastCheck);
+      checkCount += 1;
           penalty += 1;
           console.log("checkcount is " + checkCount);
           console.log("penalty is " + penalty);
-        }
-        lastCheck = position;
-        console.log("lastCheck position is " + lastCheck);
-      }
-
       bushes.innerHTML = "Number of bushes checked is " + checkCount;
       penalty.innerHTML = "Penalty is " + penalty;
     }
@@ -197,26 +201,16 @@
       }
     }
 
-    function bonus()
-     {
-      let mouseLocation = Math.floor(Math.random() * 24);
-      console.log("mouse location " + mouseLocation);
-      let catLocation = Math.floor(Math.random() * 24);
-      console.log("cat location " + catLocation);
-      document.getElementById("bushes").innerText = "Number of bushes checked is " + 0;
-      document.getElementById("penalty").innerText = "Penalty is " + 0;
-      for (i = 0; i < 24; i++)
-       {
-        if (i == mouseLocation) 
-        {
-          document.getElementById(imageID[i]).src = "mouse.jpg";
-        } else if (i == catLocation) {
-          document.getElementById(imageID[i]).src = "cat.jpg";
-        } else {
-          document.getElementById(imageID[i]).src = "bush.jpg";
+    function newGame(){
+            mouseLocation = Math.floor(Math.random()*24)
+            catLocation = Math.floor(Math.random()*24)
+            document.getElementById("bushes").innerHTML = "Number of bushes checked is 0"
+            document.getElementById("penalty").innerHTML = "Penalty is 0"
+            for(var i=0;i<=23;i++){
+                document.getElementById(ids[i]).src="bush.jpg"
+                
+            }
         }
-      }
-    }
 
   </script>
 
