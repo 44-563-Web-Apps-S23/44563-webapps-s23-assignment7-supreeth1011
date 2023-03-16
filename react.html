@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>speed check page</title>
     <meta charset="utf-8">
@@ -20,22 +21,18 @@
 
     <script>
         let reactTime = undefined;
-        function randmCount()
-         {
+        function randmCount() {
             let num = Math.floor(Math.random() * 9) + 2;
             return num;
         }
 
-        function recordTime()
-         {
+        function recordTime() {
             reactTime = Date.now();
             console.log("React button pressed time: " + reactTime)
         }
-        function startTime() 
-        {
+        function startTime() {
             let startCount = randmCount()
-            for (let i = 0; i < startCount; i++)
-             {
+            for (let i = 0; i < startCount; i++) {
                 setTimeout(function () {
                     console.log("Values after " + i)
                     document.getElementById("counter").innerHTML = "Count " + i;
